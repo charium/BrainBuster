@@ -14,5 +14,4 @@ const sequelize = process.env.DB_URL
       dialect: 'postgres',
     }
   );
-// blah blah blah blah
 module.exports = sequelize;
