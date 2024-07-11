@@ -11,7 +11,6 @@ CREATE TABLE movieA (
     id SERIAL NOT NULL,
     answer TEXT NOT NULL,
     correct BOOLEAN NOT NULL,
-    date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE musicQ (
