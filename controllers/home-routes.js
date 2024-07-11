@@ -1,19 +1,19 @@
 const router = require('express').Router();
 const { Questions, Answers } = require('../models');
 
-// Skeleton from UNC file folders
+// Skeleton from Virtual activity 19 file folders
 router.get('/', async (req, res) => {
   try {
     const dbQuestionData = await Questions.findAll({
       include: [
         {
           model: Answers,
-          attributes: ['filename', 'description'],
+          attributes: ['answers', 'hint', 'question_id'],
         },
       ],
     });
 
-    const galleries = dbGalleryData.map((gallery) =>
+    const quiz = dbGalleryData.map((gallery) =>
       gallery.get({ plain: true })
     );
     res.render('homepage', {
@@ -53,7 +53,7 @@ router.get('/gallery/:id', async (req, res) => {
   }
 });
 
-// GET one painting
+// GET one question
 router.get('/painting/:id', async (req, res) => {
   try {
     const dbPaintingData = await Painting.findByPk(req.params.id);

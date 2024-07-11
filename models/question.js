@@ -23,7 +23,7 @@ Questions.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    gallery_id: {
+    Quiz_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'Quiz',
