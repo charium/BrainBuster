@@ -1,1 +1,2 @@
-CREATE DATABASE brainBusters_db;
+CREATE DATABASE quiz_db;
+

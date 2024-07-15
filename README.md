@@ -2,6 +2,16 @@
 The most entertaining quiz app you can waste all your time on. 
 
 
+?????????
+Quiz Pathway
+?????????
+
+Database
+- Quiz
+  - Questions
+
+
+
 # login
 //as a user I want to login to the webpage on a screen
 //I want my login credentials to be saved in cookie form for ease of logging in later
@@ -17,7 +27,8 @@ The most entertaining quiz app you can waste all your time on.
 //I want a custom message based on how well I did
 # save progress
 //If theres time, I want to be able to see my past attemps 
-//I want to see my highest reccotd
+//I want to see my highest record
+
 # Interface
 //I want the page to be visually appealing
 //I want to like the early internet style webpage
