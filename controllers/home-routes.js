@@ -3,27 +3,10 @@ const { Questions, Answers } = require('../models');
 
 // Skeleton from Virtual activity 19 file folders
 router.get('/', async (req, res) => {
-  try {
-    const dbQuestionData = await Questions.findAll({
-      include: [
-        {
-          model: Answers,
-          attributes: ['answers', 'hint', 'question_id'],
-        },
-      ],
-    });
-
-    const quiz = dbGalleryData.map((gallery) =>
-      gallery.get({ plain: true })
-    );
-    res.render('homepage', {
-      galleries,
-      loggedIn: req.session.loggedIn,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+  // res.send("Hello World");
+  res.render('homepage', {
+    loggedIn: true
+  });
 });
 
 // GET one gallery
