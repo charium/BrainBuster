@@ -1,9 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+class Question extends Model {}
 
-class Questions extends Model {}
-
-Questions.init(
+Question.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -15,28 +14,21 @@ Questions.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    hint: {
-      type: DataTypes.STRING,
+    options: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
-    answer: {
+    correctAnswer: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    Quiz_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Quiz',
-        key: 'id',
-      },
     },
   },
   {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'painting',
+    modelName: 'question',
   }
 );
-
-module.exports = Painting;
+module.exports = Question;
