@@ -1,12 +1,32 @@
-{{!-- {{#if loggedIn}}
-<section class="painting">
-  <img src="/images/{{painting.filename}}" alt="{{painting.description}}">
-  <div class="painting-details">
-    <h3>{{painting.title}}</h3>
-    <p>By: {{painting.artist}}</p>
-    <p>Exhibition open until: {{ format_date painting.exhibition_date}}</p>
-  </div>
-</section>
-{{else}}
-<a href="/login">You must login first to view this page</a>
-{{/if}} --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Questions</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  {{> header}}
+  <main>
+    <h1>Quiz Questions</h1>
+    <ul>
+      {{#each questions}}
+        <li>
+          <h2>{{this.question}}</h2>
+          <ul>
+            {{#each this.options}}
+              {{#if (eq this ../correctAnswer)}}
+                <li><strong>{{this}}</strong></li>
+              {{else}}
+                <li>{{this}}</li>
+              {{/if}}
+            {{/each}}
+          </ul>
+        </li>
+      {{/each}}
+    </ul>
+  </main>
+  {{> footer}}
+</body>
+</html>

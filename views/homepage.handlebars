@@ -1,3 +1,23 @@
-<div>
-    <p>Welcomesadf asdf</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SavvyBrainBuster - Home</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  {{> header}}
+  <main>
+    <h1>Welcome to SavvyBrainBuster!</h1>
+    <p>The most entertaining quiz app you can spend your time on.</p>
+
+    {{#if loggedIn}}
+      <p>Welcome back! Ready to test your knowledge? <a href="/quiz">Start a Quiz</a></p>
+    {{else}}
+      <p><a href="/login">Login</a> or <a href="/signup">Signup</a> to start playing quizzes!</p>
+    {{/if}}
+  </main>
+  {{> footer}}
+</body>
+</html>
