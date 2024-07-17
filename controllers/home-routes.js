@@ -1,48 +1,30 @@
 const router = require('express').Router();
 const { Questions, Answers } = require('../models');
 
-// Skeleton from Virtual activity 19 file folders
+// Route to render the homepage
 router.get('/', async (req, res) => {
-  // res.send("Hello World");
-  res.render('homepage', {
-    loggedIn: true
-  });
-});
-
-// GET one gallery
-router.get('/gallery/:id', async (req, res) => {
   try {
-    const dbGalleryData = await Gallery.findByPk(req.params.id, {
-      include: [
-        {
-          model: Painting,
-          attributes: [
-            'id',
-            'title',
-            'artist',
-            'exhibition_date',
-            'filename',
-            'description',
-          ],
-        },
-      ],
+    res.render('homepage', {
+      loggedIn: req.session.loggedIn || false
     });
-
-    const gallery = dbGalleryData.get({ plain: true });
-    res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-// GET one question
-router.get('/painting/:id', async (req, res) => {
+// Route to render the quiz page
+router.get('/quiz', async (req, res) => {
   try {
-    const dbPaintingData = await Painting.findByPk(req.params.id);
+    const questionsData = await Questions.findAll({
+      include: [{ model: Answers }]
+    });
+    const questions = questionsData.map((question) => question.get({ plain: true }));
 
-    const painting = dbPaintingData.get({ plain: true });
-    res.render('painting', { painting, loggedIn: req.session.loggedIn });
+    res.render('quiz', {
+      questions,
+      loggedIn: req.session.loggedIn || false
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
