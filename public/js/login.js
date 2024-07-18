@@ -1,6 +1,8 @@
+console.log("conncted to login.js");
+
 const loginFormHandler = async (event) => {
     event.preventDefault();
-  
+    console.log("within login.js");
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
   
@@ -20,6 +22,8 @@ const loginFormHandler = async (event) => {
   };
   
   const signupFormHandler = async (event) => {
+    console.log("event heard")
+
     event.preventDefault();
   
     const username = document.querySelector('#username-signup').value.trim();
@@ -27,6 +31,7 @@ const loginFormHandler = async (event) => {
     const password = document.querySelector('#password-signup').value.trim();
   
     if (username && email && password) {
+      console.log("username", username, "email", email, "password", password);
       const response = await fetch('/api/users', {
         method: 'POST',
         body: JSON.stringify({ username, email, password }),
