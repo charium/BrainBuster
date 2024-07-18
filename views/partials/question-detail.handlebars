@@ -1,10 +1,14 @@
-{{!-- <section class="card">
-  <a href="/painting/{{id}}">
-    <header>{{title}}</header>
-
-    <div class="card-body">
-      <img src="/images/{{filename}}" alt="{{description}}">
-      <p>By: {{artist}}</p>
-    </div>
-  </a>
-</section> --}}
+<section class="card">
+  <header>
+    <h2>Question Details</h2>
+  </header>
+  <div class="card-body">
+    <h3>{{question.question}}</h3>
+    <ul>
+      {{#each question.answers}}
+        <li>{{text}}</li>
+      {{/each}}
+    </ul>
+    <a href="/quiz" class="btn btn-primary">Back to Quiz</a>
+  </div>
+</section>
