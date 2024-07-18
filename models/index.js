@@ -1,16 +1,16 @@
-console.log('models/index.js')
-
 const User = require('./user');
-// const Quiz = require('./Quiz');
-// const Question = require('/question');
+const Question = require('./question');
+const Answer = require('./answer');
 
-// Quiz.hasMany(Question, {
-//   foreignKey: 'Quiz_id',
-// });
+// Define associations
+Question.hasMany(Answer, {
+  foreignKey: 'questionId',
+  onDelete: 'CASCADE',
+});
 
-// Questions.belongsTo(Quiz, {
-//   foreignKey: 'Quiz_id',
-// });
+Answer.belongsTo(Question, {
+  foreignKey: 'questionId',
+});
 
-// also export quiz and question
-module.exports = { User };
+// Export models
+module.exports = { User, Question, Answer };

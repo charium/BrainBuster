@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Questions, Answers } = require('../models');
+const { Question, Answers } = require('../models');
 
 // Route to render the homepage
 router.get('/', async (req, res) => {
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 // Route to render the quiz page
 router.get('/quiz', async (req, res) => {
   try {
-    const questionsData = await Questions.findAll({
+    const questionsData = await Question.findAll({
       include: [{ model: Answers }]
     });
     const questions = questionsData.map((question) => question.get({ plain: true }));
