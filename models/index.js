@@ -12,5 +12,4 @@ Answer.belongsTo(Question, {
   foreignKey: 'questionId',
 });
 
-// Export models
 module.exports = { User, Question, Answer };
