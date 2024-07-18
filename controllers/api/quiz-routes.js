@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   try {
     // Fetch all questions and their answers from the database
     const questionsData = await Question.findAll({
-      include: [{ model: Answer }],
+      include: [{ model: answer }],
     });
     // Serialize the data for the template
     const questions = questionsData.map((question) => question.get({ plain: true }));
@@ -30,7 +30,7 @@ router.post('/submit', async (req, res) => {
     const userAnswers = req.body;
     // Fetch all questions and their answers from the database
     const questionsData = await Question.findAll({
-      include: [{ model: Answer }],
+      include: [{ model: answer }],
     });
     const questions = questionsData.map((question) => question.get({ plain: true }));
 
