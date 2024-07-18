@@ -10,11 +10,7 @@
 </head>
 
 <body>
-  <header>
-    <h1>The Only Quiz App Ever</h1>
-  </header>
-
-<nav>
+  <nav>
     <a href="/">Home</a>
     {{#if loggedIn}}
     <button id="logout" class="btn-no-style">Logout</button>
@@ -22,12 +18,17 @@
     <a href="/login">Login</a>
     {{/if}}
   </nav>
-
-  {{!-- <main> --}}
+  <header>
+    <h1>The Only Quiz App Ever</h1>
+  </header>
 
     <div class="quiz_page">
       {{{ body }}}
     </div>
+
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 </body>
 
 </html>
