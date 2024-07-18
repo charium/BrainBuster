@@ -7,7 +7,7 @@ document.getElementById('quiz-form').addEventListener('submit', async (event) =>
     formData.forEach((value, key) => {
       data[key] = value;
     });
-  console.log('data', data)
+  
     try {
       const response = await fetch('/api/quiz/submit', {
         method: 'POST',
@@ -19,6 +19,9 @@ document.getElementById('quiz-form').addEventListener('submit', async (event) =>
   
       const result = await response.json();
       alert(`Your score is: ${result.correct} out of ${result.total}`);
+  
+      // Reset the form after successful submission
+      event.target.reset();
     } catch (error) {
       console.error('Error submitting quiz:', error);
     }

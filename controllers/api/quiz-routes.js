@@ -20,14 +20,13 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Route to submit quiz answers
 router.post('/submit', async (req, res) => {
   try {
     const userAnswers = req.body;
     console.log('User Answers:', userAnswers);
 
-    const questionsData = await Question.findAll({
-      include: [{ model: Answer }],
-    });
+    const questionsData = await Question.findAll();
     const questions = questionsData.map((question) => question.get({ plain: true }));
     console.log('Questions Data:', questions);
 
@@ -35,13 +34,11 @@ router.post('/submit', async (req, res) => {
     const totalQuestions = questions.length;
 
     questions.forEach((question) => {
-      if (question.answers.length > 0) {
-        const correctAnswer = question.answers.find((answer) => answer.isCorrect).text;
-        if (userAnswers[`question-${question.id}`] === correctAnswer) {
-          correctAnswers++;
-        }
-      } else {
-        console.warn(`No answers found for question ID: ${question.id}`);
+      const correctAnswer = question.correctAnswer;
+      const userAnswer = userAnswers[`question-${question.id}`];
+      console.log(`Question ID: ${question.id}, Correct Answer: ${correctAnswer}, User Answer: ${userAnswer}`);
+      if (userAnswer === correctAnswer) {
+        correctAnswers++;
       }
     });
 
