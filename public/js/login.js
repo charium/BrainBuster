@@ -1,4 +1,7 @@
+console.log("login.js")
+
 const loginFormHandler = async (event) => {
+  console.log("loginFormHandler")
   event.preventDefault();
 
   console.log("loginFormHandler")
@@ -18,11 +21,13 @@ const loginFormHandler = async (event) => {
       alert('Failed to log in.');
     }
   }
+  else {
+    alert('Failed to log in.');
+  }
 };
 
 const signupFormHandler = async (event) => {
   event.preventDefault();
-  console.log("signupFormHandler")
   const username = document.querySelector('#username-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
@@ -39,6 +44,9 @@ const signupFormHandler = async (event) => {
     } else {
       alert('Failed to sign up.');
     }
+  }
+  else {
+    alert('Failed to sign up.');
   }
 };
 
