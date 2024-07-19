@@ -1,10 +1,33 @@
 const router = require('express').Router();
 const { User } = require('../../models');
-
+const withAuth = require('../../utils/auth');
 // CREATE new user
 console.log(User);
 console.log("conncted to user-routes.js");
 
+// Route to get user's scores
+router.get('/scores', withAuth, async (req, res) => {
+  try {
+    const userId = req.session.user_id; // Get user ID from session
+
+    const scoresData = await Score.findAll({
+      where: {
+        userId: userId,
+      },
+      include: [{ model: User }],
+    });
+
+    const scores = scoresData.map((score) => score.get({ plain: true }));
+
+    res.render('scores', {
+      scores,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.error('Error fetching user scores:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 router.post('/', async (req, res) => {
   try {

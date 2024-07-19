@@ -1,0 +1,8 @@
+  <main>
+    <h1>Your Scores</h1>
+    {{#each scores}}
+      <div class="score-block">
+        <p>Score: {{this.score}} / {{this.total}}</p>
+      </div>
+    {{/each}}
+  </main>

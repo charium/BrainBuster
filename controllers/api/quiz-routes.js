@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Question, Answer } = require('../../models');
-
+const withAuth = require('../../utils/auth');
 // Route to get all quiz questions
 router.get('/', async (req, res) => {
   try {
@@ -21,14 +21,13 @@ router.get('/', async (req, res) => {
 });
 
 // Route to submit quiz answers
-router.post('/submit', async (req, res) => {
+router.post('/submit', withAuth, async (req, res) => {
   try {
     const userAnswers = req.body;
-    console.log('User Answers:', userAnswers);
+    const userId = req.session.user_id; // Get user ID from session
 
     const questionsData = await Question.findAll();
     const questions = questionsData.map((question) => question.get({ plain: true }));
-    console.log('Questions Data:', questions);
 
     let correctAnswers = 0;
     const totalQuestions = questions.length;
@@ -36,10 +35,16 @@ router.post('/submit', async (req, res) => {
     questions.forEach((question) => {
       const correctAnswer = question.correctAnswer;
       const userAnswer = userAnswers[`question-${question.id}`];
-      console.log(`Question ID: ${question.id}, Correct Answer: ${correctAnswer}, User Answer: ${userAnswer}`);
       if (userAnswer === correctAnswer) {
         correctAnswers++;
       }
+    });
+
+    // Save the user's score
+    await Score.create({
+      userId: userId,
+      score: correctAnswers,
+      total: totalQuestions,
     });
 
     res.status(200).json({ correct: correctAnswers, total: totalQuestions });
@@ -48,5 +53,6 @@ router.post('/submit', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 
 module.exports = router;
