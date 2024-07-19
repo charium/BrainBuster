@@ -29,6 +29,15 @@ body {
   margin: 20px;
 }
 
+form {
+  background-color: rgba(78, 90, 130, 0);
+  justify-content: center;
+  display: column;
+  margin: 20px;
+  margin-bottom: 30px;
+
+}
+
 .quiz_header{
   font-size: 24px;
   margin-bottom: 20px;
@@ -75,4 +84,8 @@ h1, h2, p, a {
 .quiz_header {
   font-size: 24px;
   margin-bottom: 20px;
+}
+
+label {
+  color: white !important;
 }
