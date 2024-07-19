@@ -36,9 +36,6 @@ const signupFormHandler = async (event) => {
 
     if (response.ok) {
       document.location.replace('/');
-    } else if (response.status === 500) { 
-      console.log('Account already created');
-      alert('Account already exists. Please log in.');
     } else {
       alert('Failed to sign up.');
     }
