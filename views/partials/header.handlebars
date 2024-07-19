@@ -1,10 +1,13 @@
 <header>
   <nav>
-    <a href="/">Home</a>
     {{#if loggedIn}}
-      <a href="/logout">Logout</a>
+      <button id="logout" class="btn-no-style">Logout</button>
     {{else}}
-      <a href="/login">Login</a>
+      <a href="/login" class="navbtn">Login</a>
     {{/if}}
+    <a href="/" class="navbtn">Home</a>
   </nav>
+  <h1>BrainBuster</h1>
+  <h2>New York Times #1 Best Seller</h2>
+  <p>The most entertaining quiz app you can spend your time on.</p>
 </header>

@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SavvyBrainBuster - Home</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+<main>
+  <div class="card" style="width: 18rem;">
+    <img src="/images/moviegif.gif" class="movieimg" alt="...">
+    <div class="card-body">
+      <h3 class="quiz-card">Bust some Brain!</h3>
+      <p class="card-text">So you think you know it all, huh?</p>
+      <a href="/quiz" class="btn btn-primary" id="quiz-link">Yes I do</a>
+    </div>
+  </div>
+</main>
 
-<body>
-  <main>
-    <div class="card" style="width: 18rem;">
-      <img src="/images/moviegif.gif" class="movieimg" alt="...">
-        <div class="card-body">
-          <h3 class="quiz-card"> Bust some Brain!<h3>
-          <p class="card-text">so you think you know it all, huh?</p>
-          <a href="/quiz" class="btn btn-primary">yes i do</a>
-        </div>
-      </div>
-  </main>
-  {{> footer}}
+<script>
+  // Check if the user is logged in
+  document.addEventListener('DOMContentLoaded', () => {
+    const loggedIn = {{loggedIn}};
+    const quizLink = document.getElementById('quiz-link');
 
-<script src="/js/logout.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+    quizLink.addEventListener('click', (event) => {
+      if (!loggedIn) {
+        event.preventDefault();
+        window.location.href = '/login';
+      }
+    });
+  });
+</script>

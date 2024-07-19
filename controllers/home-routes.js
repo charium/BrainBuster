@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { Question, Answer } = require('../models');
-const withAuth = require('../utils/auth');
+const { Question, Answer, Score, User } = require('../models');
+const withAuth = require('../utils/auth'); // Middleware to check if the user is logged in
+
 // Route to render the homepage
 router.get('/', async (req, res) => {
   try {
@@ -14,7 +15,7 @@ router.get('/', async (req, res) => {
 });
 
 // Route to render the quiz page
-router.get('/quiz', async (req, res) => {
+router.get('/quiz', withAuth, async (req, res) => {
   try {
     const questionsData = await Question.findAll({
       include: [{ model: Answer }]
@@ -30,6 +31,7 @@ router.get('/quiz', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 // Route to get user's scores
 router.get('/scores', withAuth, async (req, res) => {
   try {
@@ -53,6 +55,7 @@ router.get('/scores', withAuth, async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 // Login route
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {

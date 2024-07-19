@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SavvyBrainBuster - Quiz</title>
-  <link rel="stylesheet" href="/css/styles.css">
-  <script src="/js/quiz.js" defer></script>
-</head>
-<body>
   <main>
     <div>
     <h1 class="quiz_header">Think you know your stuff?</h1>
     </div>
-    <form class="quiz-form">
+    <form id="quiz-form" class="quiz-form">
       {{#each questions}}
         <section>
           <h2>{{this.question}}</h2>
@@ -27,6 +17,4 @@
       <button type="submit">Submit Quiz</button>
     </form>
   </main>
-  {{> footer}}
-</body>
-</html>
+<script src="/js/quiz.js"></script>
