@@ -17,8 +17,21 @@ Visit our website here: https://savvybrainbuster.onrender.com
 For best results, due to incompatibilities with Render, copy the code onto your local machine here: 
 https://github.com/charium/SavvyBrainBuster 
 
+## Technologies 
+Technologies used on this website are 
+- Express.js
+- Bootstrap
+- PostSQL
+- Sequalize
+- HTML/CSS
+
 ## Usage
 To use this website, simply sign up or login then click a quiz to get started. 
+
+## The Deployed Webpage
+[![Deployed Image Hompage](public/images/ss.png)](https://savvybrainbuster.onrender.com)
+[![Deployed Image Login](public/images/ss2.png)](https://savvybrainbuster.onrender.com)
+[![Deployed Image Test Score](public/images/ss3.png)](https://savvybrainbuster.onrender.com)
 
 ## License
 This application falls under the MIT License. Find further details in the repository.
