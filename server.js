@@ -37,3 +37,8 @@ sequelize.sync({ force: false }).then(() => {
     console.log(`\nServer running on port ${PORT}. Visit http://localhost:${PORT} and create an account!`)
   );
 });
+
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "default-src 'none'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;");
+  next();
+});

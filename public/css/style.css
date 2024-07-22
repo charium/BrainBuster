@@ -14,7 +14,6 @@
 
 body {
   background-image: url(/images/bgd.svg) !important;
-  margin-left: 10px;
   padding: 0;
   font-family: "comic sans ms", sans-serif;
   line-height: 1.5;
@@ -23,40 +22,30 @@ body {
   color: white;
 }
 
-.quiz_page {
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-}
-
-form {
-  background-color: rgba(78, 90, 130, 0);
-  justify-content: center;
-  display: column;
-  margin: 20px;
-  margin-bottom: 30px;
-
-}
-
-.quiz_header{
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
 header {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 100%;
-  height: 200px;
-  background-repeat:no-repeat; 
+  margin-left: 20px;
 }
 
-nav {
-  height: 50px;
-  margin-bottom: 20px;
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  padding: 10px;
+  margin: 10px;
+  width: 18rem;
+  flex: 1 1 calc(25% - 40px); /* Default to 4 cards per row */
+}
+
+.movieimg {
+  border: 3px solid #297ea6;
+  border-radius: 7px;
 }
 
 .navbtn {
+  font-family: "comic sans ms", sans-serif !important;
   background: none;
   border: none;
   width: 50px;
@@ -64,38 +53,153 @@ nav {
   padding: 0px;
   display: inline-block;
   cursor: pointer;
-} 
+}
 
-.navbtn .star{
+.navbtn .star {
   width: 100%;
   height: 100%;
   display: inline-block;
   cursor: pointer;
-} 
+}
 
-.star:hover .star-polygon{
+.star:hover .star-polygon {
   fill: #0e2b41;
 }
 
-.star:hover text{
+.star .btn-polygon {
+  fill: #a65a29;
+  stroke: white;
+  stroke-width: 3;
+  transition: stroke 0.3s ease;
+}
+
+.star:hover .btn-polygon {
+  stroke: #a65a29;
+}
+
+.btn-polygon:hover {
+  stroke: #a65a29;
+}
+
+.star:hover text {
+  display: none !important;
+}
+
+.quiz-star {
+  transform: scale(1.5)
+}
+
+.star:hover text {
   fill: white;
+}
+
+h1, h2 {
+  font-weight: bold;
+  padding: 2px;
+  background: #001829;
 }
 
 h1, h2, p, a {
   font-family: "comic sans ms", sans-serif;
-  color: rgb(184, 184, 184) !important;
+  color: rgb(202, 201, 201) !important;
+}
+
+.subhead {
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 
 #quiz_content {
-  color: rgb(145, 163, 175);
+  text-align: center;
+  color: rgb(61, 112, 146);
   font-size: 16px;
 }
 
-.quiz_header {
-  font-size: 24px;
-  margin-bottom: 20px;
+.quiz-card {
+  font-family: "comic sans ms", sans-serif;
+  color: #9fa3a5;
+}
+
+.card h3 {
+  color: #1b1a1a !important;
+}
+
+.card p {
+  color: #494747 !important;
 }
 
 label {
   color: white !important;
 }
+
+#login-form {
+  margin-left: 40px !important;
+}
+
+#login-form form {
+  margin-bottom: 20px;
+}
+
+#login-form input {
+  width: 500px;
+}
+
+
+footer {
+  background-color: #1b1a1a; /* Dark background color */
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-links {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.footer-links a {
+  display: inline-block;
+}
+
+.footer-links img {
+  width: 40px; /* Adjust size as needed */
+  height: auto;
+  border-radius: 5px; /* Optional: to give rounded corners */
+}
+
+.footer-links img:hover {
+  opacity: 0.8; /* Optional: to give a hover effect */
+}
+
+
+/* Media queries for responsive design */
+
+/* Stacks cards in a 1x4 layout on very small screens */
+@media (max-width: 600px) {
+  .card {
+    flex: 1 1 100%;
+  }
+}
+
+/* Stacks cards in a 2x2 layout on small to medium screens */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .card {
+    flex: 1 1 calc(50% - 40px); /* Two cards per row */
+  }
+}
+
+/* Stacks cards in a 4x1 layout on large screens */
+@media (min-width: 1025px) {
+  .card {
+    flex: 1 1 calc(25% - 40px); /* Four cards per row */
+  }
+}
+
